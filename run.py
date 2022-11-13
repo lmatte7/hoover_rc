@@ -15,6 +15,10 @@ class MyController(Controller):
     def on_x_press(self):
        self.kit.motor1.throttle = 0
        self.kit.motor2.throttle = 0
+       self.kit.motor3.throttle = 0
+
+    def on_circle_release(self):
+         self.kit.motor3.throttle = 0.8
 
     def on_x_release(self):
        self.kit.motor1.throttle = 0
