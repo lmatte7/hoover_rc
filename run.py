@@ -2,6 +2,7 @@ import time
 import board
 from adafruit_motorkit import MotorKit
 from pyPS4Controller.controller import Controller
+import RPi.GPIO as GPIO
 
 class MyController(Controller):
 
@@ -11,14 +12,18 @@ class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
+	GPIO.setmode(GPIO.BOARD)
+	GPIO.setup(17, GPIO.OUT)
 
     def on_x_press(self):
        self.kit.motor1.throttle = 0
        self.kit.motor2.throttle = 0
        self.kit.motor3.throttle = 0
+       GPIO.output(led, GPIO.LOW)
 
     def on_circle_release(self):
          self.kit.motor3.throttle = 0.8
+         GPIO.output(led, GPIO.HIGH)
 
     def on_x_release(self):
        self.kit.motor1.throttle = 0
