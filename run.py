@@ -12,18 +12,17 @@ class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-	GPIO.setmode(GPIO.BOARD)
-	GPIO.setup(17, GPIO.OUT)
+        GPIO.setup(17, GPIO.OUT)
 
     def on_x_press(self):
        self.kit.motor1.throttle = 0
        self.kit.motor2.throttle = 0
        self.kit.motor3.throttle = 0
-       GPIO.output(led, GPIO.LOW)
+       GPIO.output(17, GPIO.LOW)
 
     def on_circle_release(self):
          self.kit.motor3.throttle = 0.8
-         GPIO.output(led, GPIO.HIGH)
+         GPIO.output(17, GPIO.HIGH)
 
     def on_x_release(self):
        self.kit.motor1.throttle = 0

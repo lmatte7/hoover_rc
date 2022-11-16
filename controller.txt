@@ -1,0 +1,6 @@
+power on
+discoverable on
+pairable on
+agent NoInputNoOutput
+default-agent 
+trust 90:89:5F:25:C0:A1
